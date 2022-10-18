@@ -1,0 +1,8 @@
+{
+	"[python]": {
+		"editor.autoIndent": "none",
+		"editor.insertSpaces": false,
+		"editor.renderWhitespace": "none"
+	},
+	"editor.hover.enabled": false
+}
