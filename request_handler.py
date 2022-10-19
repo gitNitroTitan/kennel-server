@@ -2,9 +2,10 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 from views import (create_animal, create_customer, create_employee,
-                   create_location, get_all_animals, get_all_customers,
-                   get_all_employees, get_all_locations, get_single_animal,
-                   get_single_customer, get_single_employee,
+                   create_location, delete_animal, delete_customer,
+                   delete_employee, delete_location, get_all_animals,
+                   get_all_customers, get_all_employees, get_all_locations,
+                   get_single_animal, get_single_customer, get_single_employee,
                    get_single_location)
 
 
@@ -181,7 +182,29 @@ class HandleRequests(BaseHTTPRequestHandler):
         """
         self.do_POST()
 
+    def do_DELETE(self):
+        """docstring"""
+        # Set a 204 response code
+        self._set_headers(204)
 
+    # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Delete a single animal from the list
+        if resource == "animals":
+            delete_animal(id)
+
+        if resource == "customers":
+            delete_customer(id)
+
+        if resource == "locations":
+            delete_location(id)
+
+        if resource == "employees":
+            delete_employee(id)
+
+        # Encode the new animal and send in response
+            self.wfile.write("".encode())
 # This function is not inside the class. It is the starting
 # point of this application.
 def main():
