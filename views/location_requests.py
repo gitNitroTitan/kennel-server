@@ -2,12 +2,14 @@ LOCATIONS = [
         {
             "id": 1,
             "name": "Nashville North",
-            "address": "8422 Johnson Pike"
+            "address": "8422 Johnson Pike",
+            "status": "Ready for sale"
         },
         {
             "id": 2,
             "name": "Nashville South",
-            "address": "209 Emory Drive"
+            "address": "209 Emory Drive",
+            "status": "Ready for sale"
         }
     ]
 
@@ -62,3 +64,13 @@ def delete_location(id):
     # If the location was found, use pop(int) to remove it from list
     if location_index >= 0:
         LOCATIONS.pop(location_index)
+
+def update_location(id, new_location):
+    """docstring"""
+    # Iterate the locationS list, but use enumerate() so that
+    # you can access the index value of each item.
+    for index, location in enumerate(LOCATIONS):
+        if location["id"] == id:
+            # Found the location. Update the value.
+            LOCATIONS[index] = new_location
+            break
