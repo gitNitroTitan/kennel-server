@@ -4,5 +4,14 @@
 		"editor.insertSpaces": false,
 		"editor.renderWhitespace": "none"
 	},
-	"editor.hover.enabled": false
+	"editor.hover.enabled": false,
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"driver": "SQLite",
+			"name": "SQLTools",
+			"database": "${workspaceFolder:kennels-server}/kennel.sqlite3"
+		}
+	],
+	"sqltools.useNodeRuntime": true
 }
