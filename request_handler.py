@@ -8,10 +8,8 @@ from views import (create_animal, create_customer, create_employee,
                    get_all_customers, get_all_employees, get_all_locations,
                    get_single_animal, get_single_customer, get_single_employee,
                    get_single_location, update_animal, update_customer,
-                   update_employee, update_location)
-from views.animal_requests import get_animals_by_location, get_animals_by_status
-from views.customer_requests import get_customers_by_email
-from views.employee_requests import get_employees_by_location
+                   update_employee, update_location, get_animals_by_location, get_animals_by_status, get_customers_by_email, get_employees_by_location)
+
 
 
 # Here's a class. It inherits from another class.
@@ -92,6 +90,16 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_customer(id)}"
                 else:
                     response = f"{get_all_customers()}"
+            elif resource == "employees":
+                if id is not None:
+                    response = f"{get_single_employee(id)}"
+                else:
+                    response = f"{get_all_employees()}"
+            elif resource == "locations":
+                if id is not None:
+                    response = f"{get_single_location(id)}"
+                else:
+                    response = f"{get_all_locations()}"
 
         else: # There is a ? in the path, run the query param functions
             (resource, query) = parsed
