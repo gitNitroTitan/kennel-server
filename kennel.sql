@@ -71,7 +71,10 @@ WHERE a.id = 4
 -- Get only the customer rows where the `id` field value is 3
 SELECT
     c.id,
-    c.name
+    c.name,
+    c.address,
+    c.email,
+    c.password
 FROM customer c
 WHERE c.id = 3
 
@@ -101,3 +104,48 @@ SELECT
 FROM Animal a
 LEFT JOIN Location l
     ON l.id = a.location_id
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id,
+    c.name customer_name,
+    c.address customer_address,
+    c.email customer_email,
+    c.password customer_password
+FROM Animal a
+LEFT JOIN customer c
+    ON c.id = a.customer_id
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id,
+    c.name customer_name,
+    c.address customer_address,
+    c.email customer_email,
+    c.password customer_password,
+    l.name location_name,
+    l.address location_address
+FROM Animal a
+LEFT JOIN customer c
+    ON c.id = a.customer_id
+LEFT JOIN location l
+    ON l.id = a.location_id
+
+        SELECT
+            e.id,
+            e.name,
+            e.address,
+            e.location_id,
+            l.name location_name,
+            l.address location_address
+        FROM employee e
+        LEFT JOIN Location l
+            ON l.id = e.location_id
